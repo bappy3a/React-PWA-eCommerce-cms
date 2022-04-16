@@ -11,9 +11,10 @@ class NewArrival extends Component {
             dots: false,
             infinite: true,
             slidesToShow: 4,
+            arrows:false,
             slidesToScroll: 1,
             autoplay: true,
-            speed: 4000,
+            speed: 800,
             autoplaySpeed: 3000,
             cssEase: "linear",
             responsive: [

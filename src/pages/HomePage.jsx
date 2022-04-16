@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import NavMenuDesktop from '../components/common/NavMenuDesktop'
 import Categories from '../components/home/Categories'
 import Collection from '../components/home/Collection'
 import FeatureProducts from '../components/home/FeatureProducts'
@@ -9,7 +10,8 @@ class HomePage extends Component {
   render() {
     return (
       <Fragment>
-          <HomeTop></HomeTop>
+          <NavMenuDesktop />
+          <HomeTop />
           <Categories />
           <FeatureProducts />
           <NewArrival />
