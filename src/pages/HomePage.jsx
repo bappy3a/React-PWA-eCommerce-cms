@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import FooterDesktop from '../components/common/FooterDesktop'
 import NavMenuDesktop from '../components/common/NavMenuDesktop'
 import Categories from '../components/home/Categories'
 import Collection from '../components/home/Collection'
@@ -16,6 +17,7 @@ class HomePage extends Component {
           <FeatureProducts />
           <NewArrival />
           <Collection />
+          <FooterDesktop />
       </Fragment>
     )
   }

@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import HomePage from '../pages/HomePage';
+import UserLoginPage from '../pages/UserLoginPage';
   
 
 class AppRoute extends Component {
@@ -8,7 +9,8 @@ class AppRoute extends Component {
     return (
       <Fragment>
           <Switch>
-            <Route exact to="/" component={HomePage} ></Route>
+            <Route exact path="/" component={HomePage} ></Route>
+            <Route exact path="/login" component={UserLoginPage} ></Route>
           </Switch>
       </Fragment>
     )
