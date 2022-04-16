@@ -6,11 +6,11 @@ import UserLogin from '../components/common/UserLogin'
 class UserLoginPage extends Component {
   render() {
     return (
-        <Fragment>
+      <Fragment>
         <NavMenuDesktop />
         <UserLogin />
         <FooterDesktop />
-    </Fragment>
+      </Fragment>
     )
   }
 }
