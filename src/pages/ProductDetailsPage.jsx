@@ -1,23 +1,21 @@
 import React, { Component, Fragment } from 'react'
-import Contact from '../components/common/Contact'
 import FooterDesktop from '../components/common/FooterDesktop'
 import NavMenuDesktop from '../components/common/NavMenuDesktop'
+import ProductDetails from '../components/ProductDetails/ProductDetails'
 
-class ContactPage extends Component {
+class ProductDetailsPage extends Component {
     componentDidMount() {
         window.scroll(0, 0)
     }
-
-
     render() {
         return (
             <Fragment>
                 <NavMenuDesktop />
-                <Contact />
+                <ProductDetails />
                 <FooterDesktop />
             </Fragment>
         )
     }
 }
 
-export default ContactPage
+export default ProductDetailsPage

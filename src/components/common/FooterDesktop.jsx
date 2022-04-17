@@ -34,7 +34,9 @@ class FooterDesktop extends Component {
               <Col className='p-2'  lg={3} md={3} sm={6} xs={12}>
                 <h5 className='footer-menu-title'>Download App </h5>
                 <a href="#"><img src={Google} className='' /></a>
-                <a href="#"><img src={Apple} className='mt-2' /></a>
+                <a href="#"><img src={Apple} className='mt-2' /></a> <br /><br />
+                Change Your Language <br></br>
+                <div id="google_translate_element">  </div>
               </Col>
             </Row>
           </Container>

@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import {Card, Col, Container, Row } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 class FeatureProducts extends Component {
     render() {
@@ -13,13 +14,15 @@ class FeatureProducts extends Component {
                     <Row>
 
                         <Col className='p-1' key={1} xl={2} lg={2} sm={4} xs={6} >
-                            <Card className='image-box card'>
-                                <img className='center' src="https://rukminim2.flixcart.com/image/832/832/ke1pnrk0/mobile/j/q/r/gionee-max-gionee-max-original-imafutmrmdaz2dau.jpeg?q=70" alt="" />
-                                <Card.Body>
-                                    <p className='product-name-on-card'>Realme GT 2 Pro (Paper White, 128 GB)  (8 GB RAM)</p>
-                                    <p className='product-price-on-card'>Price $300</p>
-                                </Card.Body>
-                            </Card>
+                            <Link to="/productdetails">
+                                <Card className='image-box card'>
+                                    <img className='center' src="https://rukminim2.flixcart.com/image/832/832/ke1pnrk0/mobile/j/q/r/gionee-max-gionee-max-original-imafutmrmdaz2dau.jpeg?q=70" alt="" />
+                                    <Card.Body>
+                                        <p className='product-name-on-card'>Realme GT 2 Pro (Paper White, 128 GB)  (8 GB RAM)</p>
+                                        <p className='product-price-on-card'>Price $300</p>
+                                    </Card.Body>
+                                </Card>
+                            </Link>
                         </Col>
                         <Col className='p-1' key={1} xl={2} lg={2} sm={4} xs={6} >
                             <Card className='image-box card'>

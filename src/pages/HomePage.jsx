@@ -8,16 +8,20 @@ import HomeTop from '../components/home/HomeTop'
 import NewArrival from '../components/home/NewArrival'
 
 class HomePage extends Component {
+  componentDidMount() {
+    window.scroll(0, 0)
+  }
+
   render() {
     return (
       <Fragment>
-          <NavMenuDesktop />
-          <HomeTop />
-          <Categories />
-          <FeatureProducts />
-          <NewArrival />
-          <Collection />
-          <FooterDesktop />
+        <NavMenuDesktop />
+        <HomeTop />
+        <Categories />
+        <FeatureProducts />
+        <NewArrival />
+        <Collection />
+        <FooterDesktop />
       </Fragment>
     )
   }
