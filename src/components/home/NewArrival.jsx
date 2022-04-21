@@ -3,9 +3,48 @@ import { Card, Container, Row } from 'react-bootstrap'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import axios from 'axios';
+import AppUrl from '../../api/AppUrl';
 
 class NewArrival extends Component {
+
+    constructor(){
+        super();
+        this.state = {
+            NewArrival : [],
+        }
+    }
+    
+    componentDidMount(){
+        this.getAllNewArrival();
+    }
+
+    getAllNewArrival(){
+        axios.get(AppUrl.allArrival)
+            .then((response)=>{
+                this.setState({NewArrival:response.data})
+            })
+            .catch((error) => {
+                console.log(error.response.data.message);
+            });
+    }
+
+
     render() {
+
+        const NewArrival = this.state.NewArrival;
+
+        const MyView = NewArrival.map((product,i)=>{
+            return <div>
+                <Card className='image-box card'>
+                    <img className='center' src={product.image} alt="" />
+                    <Card.Body>
+                        <p className='product-name-on-card'>{product.name}</p>
+                        <p className='product-price-on-card'>Price ${product.price}</p>
+                    </Card.Body>
+                </Card>
+            </div>
+        });
 
         var settings = {
             dots: false,
@@ -55,60 +94,7 @@ class NewArrival extends Component {
                     </div>
                     <Row>
                         <Slider {...settings}>
-                            <div>
-                                <Card className='image-box card'>
-                                    <img className='center' src="https://rukminim2.flixcart.com/image/880/1056/kjvrdzk0/shoe/z/c/s/sx0168l-6-sparx-navybluepink-original-imafzcsfyruyypgu.jpeg?q=50" alt="" />
-                                    <Card.Body>
-                                        <p className='product-name-on-card'>Realme GT 2 Pro (Paper White, 128 GB)  (8 GB RAM)</p>
-                                        <p className='product-price-on-card'>Price $300</p>
-                                    </Card.Body>
-                                </Card>
-                            </div>
-                            <div>
-                                <Card className='image-box card'>
-                                    <img className='center' src="https://rukminim2.flixcart.com/image/880/1056/k6zda4w0/shoe/c/r/h/11008242-40-fila-lt-pea-blk-original-imafpbppkmfgmcxd.jpeg?q=50" alt="" />
-                                    <Card.Body>
-                                        <p className='product-name-on-card'>Realme GT 2 Pro (Paper White, 128 GB)  (8 GB RAM)</p>
-                                        <p className='product-price-on-card'>Price $300</p>
-                                    </Card.Body>
-                                </Card>
-                            </div>
-                            <div>
-                                <Card className='image-box card'>
-                                    <img className='center' src="https://rukminim2.flixcart.com/image/880/1056/kxf0jgw0/shoe/q/c/n/-original-imag9vf8mdwkyja6.jpeg?q=50" alt="" />
-                                    <Card.Body>
-                                        <p className='product-name-on-card'>Realme GT 2 Pro (Paper White, 128 GB)  (8 GB RAM)</p>
-                                        <p className='product-price-on-card'>Price $300</p>
-                                    </Card.Body>
-                                </Card>
-                            </div>
-                            <div>
-                                <Card className='image-box card'>
-                                    <img className='center' src="https://rukminim2.flixcart.com/image/880/1056/ks99aq80/shoe/5/m/0/8-pro-us-212100-provogue-brown-original-imag5ug8vfsrkmfz.jpeg?q=50" alt="" />
-                                    <Card.Body>
-                                        <p className='product-name-on-card'>Realme GT 2 Pro (Paper White, 128 GB)  (8 GB RAM)</p>
-                                        <p className='product-price-on-card'>Price $300</p>
-                                    </Card.Body>
-                                </Card>
-                            </div>
-                            <div>
-                                <Card className='image-box card'>
-                                    <img className='center' src="https://rukminim2.flixcart.com/image/880/1056/kr83ukw0/shoe/t/1/d/6-jump-08-arivo-black-original-imag52gzw7jwz7xy.jpeg?q=50" alt="" />
-                                    <Card.Body>
-                                        <p className='product-name-on-card'>Realme GT 2 Pro (Paper White, 128 GB)  (8 GB RAM)</p>
-                                        <p className='product-price-on-card'>Price $300</p>
-                                    </Card.Body>
-                                </Card>
-                            </div>
-                            <div>
-                                <Card className='image-box card'>
-                                    <img className='center' src="https://rukminim2.flixcart.com/image/880/1056/kyj0vbk0/shoe/v/q/c/10-popkorn-01cwhtorng-asian-white-original-imagaqugk6wgwk5q.jpeg?q=50" alt="" />
-                                    <Card.Body>
-                                        <p className='product-name-on-card'>Realme GT 2 Pro (Paper White, 128 GB)  (8 GB RAM)</p>
-                                        <p className='product-price-on-card'>Price $300</p>
-                                    </Card.Body>
-                                </Card>
-                            </div>
+                            {MyView}
                         </Slider>
 
                     </Row>
