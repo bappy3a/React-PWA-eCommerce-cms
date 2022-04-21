@@ -1,8 +1,49 @@
+import axios from 'axios';
+import { constants } from 'buffer'
 import React, { Component, Fragment } from 'react'
 import { Card, Col, Container, Row } from 'react-bootstrap'
+import AppUrl from '../../api/AppUrl';
 
 class Categories extends Component {
+
+    constructor(){
+        super();
+        this.state = {
+            categories:[],
+        }
+    }
+    
+    componentDidMount(){
+        this.getCategoyrs();
+    }
+
+    getCategoyrs(){
+        axios.get(AppUrl.allCategory)
+            .then((response) => {
+                this.setState({ categories: response.data });
+            })
+            .catch((error) => {
+                console.log(error.response.data.message);
+            });
+    }    
+
     render() {
+
+        const CatList = this.state.categories;
+
+        const MyView = CatList.map((CatList,i)=>{
+
+            return <Col className='p-1' key={i.toString()} xl={2} lg={2} md={2} sm={6} xs={6}>
+                
+                    <Card className='h-100 w-100 text-center'>
+                        <Card.Body>
+                            <img className='center' src={CatList.category_image} alt="" />
+                            <h5 className='categoyr-name'>{CatList.category_name}</h5>
+                        </Card.Body>
+                    </Card>
+                </Col>
+        })
+
         return (
             <Fragment>
                 <Container>
@@ -12,59 +53,7 @@ class Categories extends Component {
                     </div>
                     <Row>
 
-                        <Col className='p-1' key={1} xl={2} lg={2} md={2} sm={6} xs={6}>
-                            <Card className='h-100 w-100 text-center'>
-                                <Card.Body>
-                                    <img className='center' src="https://rukminim2.flixcart.com/flap/128/128/image/3c0ed3a475254040.png?q=100" alt="" />
-                                    <h5 className='categoyr-name'>Mobile</h5>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-
-                        <Col className='p-1' key={1} xl={2} lg={2} md={2} sm={6} xs={6}>
-                            <Card className='h-100 w-100 text-center'>
-                                <Card.Body>
-                                    <img className='center' src="https://rukminim2.flixcart.com/flap/128/128/image/176346e6dd7d4c19.png?q=100" alt="" />
-                                    <h5 className='categoyr-name'>Fashion</h5>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-
-                        <Col className='p-1' key={1} xl={2} lg={2} md={2} sm={6} xs={6}>
-                            <Card className='h-100 w-100 text-center'>
-                                <Card.Body>
-                                    <img className='center' src="https://rukminim2.flixcart.com/flap/128/128/image/033d10763bb282c8.png?q=100" alt="" />
-                                    <h5 className='categoyr-name'>Electronics</h5>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-
-                        <Col className='p-1' key={1} xl={2} lg={2} md={2} sm={6} xs={6}>
-                            <Card className='h-100 w-100 text-center'>
-                                <Card.Body>
-                                    <img className='center' src="https://rukminim2.flixcart.com/flap/128/128/image/fe1ecdf8ac74c447.png?q=100" alt="" />
-                                    <h5 className='categoyr-name'>Home</h5>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-
-                        <Col className='p-1' key={1} xl={2} lg={2} md={2} sm={6} xs={6}>
-                            <Card className='h-100 w-100 text-center'>
-                                <Card.Body>
-                                    <img className='center' src="https://rukminim2.flixcart.com/flap/128/128/image/5ea7d4e25b97415f.png?q=100" alt="" />
-                                    <h5 className='categoyr-name'>Travel</h5>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-
-                        <Col className='p-1' key={1} xl={2} lg={2} md={2} sm={6} xs={6}>
-                            <Card className='h-100 w-100 text-center'>
-                                <Card.Body>
-                                    <img className='center' src="https://rukminim2.flixcart.com/flap/128/128/image/f7c65aa39d3625f5.png?q=100" alt="" />
-                                    <h5 className='categoyr-name'>Beauty,Toys & more</h5>
-                                </Card.Body>
-                            </Card>
-                        </Col>
+                        {MyView}
                         
 
                     </Row>

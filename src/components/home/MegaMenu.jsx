@@ -1,14 +1,30 @@
+import axios from 'axios';
 import React, { Component } from 'react'
+import AppUrl from '../../api/AppUrl';
 
 export class MegaMenu extends Component {
 
-    constructor() {
+    constructor(props) {
         super();
         this.MegaMenu = this.MegaMenu.bind(this);
+        this.state = {
+            categorys: [],
+        }
     }
 
     componentDidMount() {
         this.MegaMenu();
+        this.GetCategory();
+    }
+
+    GetCategory() {
+        axios.get(AppUrl.allCategory)
+            .then((response) => {
+                this.setState({ categorys: response.data });
+            })
+            .catch((error) => {
+                console.log(error.response.data.message);
+            });
     }
 
     MegaMenu() {
@@ -17,135 +33,25 @@ export class MegaMenu extends Component {
     }
 
     render() {
+
+        const CatList = this.props.data;
+
+        const MyView = CatList.map((CatList,i)=>{
+
+            return <div key={i.toString()}>
+                <button className='accordion'>
+                    <img src={CatList.category_image} alt={CatList.category_name} className='accordionMenuIcon' /> {CatList.category_name}
+                </button>
+            </div>
+
+        });
+
         return (
             <div className='accordionMenuDiv'>
                 <div className="accordionMenuDivInside">
-                    <button className='accordion'>
-                        <img src="https://cdn-icons-png.flaticon.com/128/739/739249.png" alt="" className='accordionMenuIcon' /> Mes's Clothing
-                    </button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem">Mans T-Shart 1</a></li>
-                            <li><a href="#" className="accordionItem">Mans T-Shart 2</a></li>
-                        </ul>
-                    </div>
-                    <button className='accordion'>
-                        <img src="https://cdn-icons-png.flaticon.com/128/739/739249.png" alt="" className='accordionMenuIcon' /> Mes's Clothing
-                    </button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem">Mans T-Shart 1</a></li>
-                            <li><a href="#" className="accordionItem">Mans T-Shart 2</a></li>
-                        </ul>
-                    </div>
-                    <button className='accordion'>
-                        <img src="https://cdn-icons-png.flaticon.com/128/739/739249.png" alt="" className='accordionMenuIcon' /> Mes's Clothing
-                    </button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem">Mans T-Shart 1</a></li>
-                            <li><a href="#" className="accordionItem">Mans T-Shart 2</a></li>
-                        </ul>
-                    </div>
-                    <button className='accordion'>
-                        <img src="https://cdn-icons-png.flaticon.com/128/739/739249.png" alt="" className='accordionMenuIcon' /> Mes's Clothing
-                    </button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem">Mans T-Shart 1</a></li>
-                            <li><a href="#" className="accordionItem">Mans T-Shart 2</a></li>
-                        </ul>
-                    </div>
-                    <button className='accordion'>
-                        <img src="https://cdn-icons-png.flaticon.com/128/739/739249.png" alt="" className='accordionMenuIcon' /> Mes's Clothing
-                    </button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem">Mans T-Shart 1</a></li>
-                            <li><a href="#" className="accordionItem">Mans T-Shart 2</a></li>
-                        </ul>
-                    </div>
-                    <button className='accordion'>
-                        <img src="https://cdn-icons-png.flaticon.com/128/739/739249.png" alt="" className='accordionMenuIcon' /> Mes's Clothing
-                    </button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem">Mans T-Shart 1</a></li>
-                            <li><a href="#" className="accordionItem">Mans T-Shart 2</a></li>
-                        </ul>
-                    </div>
-                    <button className='accordion'>
-                        <img src="https://cdn-icons-png.flaticon.com/128/739/739249.png" alt="" className='accordionMenuIcon' /> Mes's Clothing
-                    </button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem">Mans T-Shart 1</a></li>
-                            <li><a href="#" className="accordionItem">Mans T-Shart 2</a></li>
-                        </ul>
-                    </div>
-                    <button className='accordion'>
-                        <img src="https://cdn-icons-png.flaticon.com/128/739/739249.png" alt="" className='accordionMenuIcon' /> Mes's Clothing
-                    </button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem">Mans T-Shart 1</a></li>
-                            <li><a href="#" className="accordionItem">Mans T-Shart 2</a></li>
-                        </ul>
-                    </div>
-                    <button className='accordion'>
-                        <img src="https://cdn-icons-png.flaticon.com/128/739/739249.png" alt="" className='accordionMenuIcon' /> Mes's Clothing
-                    </button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem">Mans T-Shart 1</a></li>
-                            <li><a href="#" className="accordionItem">Mans T-Shart 2</a></li>
-                        </ul>
-                    </div>
-                    <button className='accordion'>
-                        <img src="https://cdn-icons-png.flaticon.com/128/739/739249.png" alt="" className='accordionMenuIcon' /> Mes's Clothing
-                    </button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem">Mans T-Shart 1</a></li>
-                            <li><a href="#" className="accordionItem">Mans T-Shart 2</a></li>
-                        </ul>
-                    </div>
-                    <button className='accordion'>
-                        <img src="https://cdn-icons-png.flaticon.com/128/739/739249.png" alt="" className='accordionMenuIcon' /> Mes's Clothing
-                    </button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem">Mans T-Shart 1</a></li>
-                            <li><a href="#" className="accordionItem">Mans T-Shart 2</a></li>
-                        </ul>
-                    </div>
-                    <button className='accordion'>
-                        <img src="https://cdn-icons-png.flaticon.com/128/739/739249.png" alt="" className='accordionMenuIcon' /> Mes's Clothing
-                    </button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem">Mans T-Shart 1</a></li>
-                            <li><a href="#" className="accordionItem">Mans T-Shart 2</a></li>
-                        </ul>
-                    </div>
-                    <button className='accordion'>
-                        <img src="https://cdn-icons-png.flaticon.com/128/739/739249.png" alt="" className='accordionMenuIcon' /> Mes's Clothing
-                    </button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem">Mans T-Shart 1</a></li>
-                            <li><a href="#" className="accordionItem">Mans T-Shart 2</a></li>
-                        </ul>
-                    </div>
-                    <button className='accordion'>
-                        <img src="https://cdn-icons-png.flaticon.com/128/739/739249.png" alt="" className='accordionMenuIcon' /> Mes's Clothing
-                    </button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem">Mans T-Shart 1</a></li>
-                            <li><a href="#" className="accordionItem">Mans T-Shart 2</a></li>
-                        </ul>
-                    </div>
+                    
+                    {MyView}
+
                 </div>
 
             </div>
