@@ -5,9 +5,40 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider1 from '../../assets/images/slider1.jpg';
 import Slider2 from '../../assets/images/slider2.jpg';
 import Slider3 from '../../assets/images/slider3.jpg';
+import axios from 'axios';
+import AppUrl from '../../api/AppUrl';
 
 class HomeSlider extends Component {
+
+    constructor(){
+        super()
+        this.state = {
+            sliders : [],
+        }
+    }
+    componentDidMount(){
+        this.getSlider();
+    }
+
+    getSlider(){
+        axios.get(AppUrl.allSlider)
+        .then((response)=>{
+            this.setState({sliders:response.data});
+        })
+        .catch((e)=>{
+            console.log(e);
+        })
+    }
+
+
     render() {
+
+        const MyView = this.state.sliders.map((slider,id)=>{
+            return <div>
+                    <img className='slider-img' src={slider.slider_image} alt="" />
+                </div>
+        })
+
         var settings = {
             dots: true,
             infinite: true,
@@ -49,15 +80,7 @@ class HomeSlider extends Component {
         return (
             <Fragment>
                 <Slider {...settings}>
-                    <div>
-                        <img className='slider-img' src={Slider1} alt="" />
-                    </div>
-                    <div>
-                        <img className='slider-img' src={Slider2} alt="" />
-                    </div>
-                    <div>
-                        <img className='slider-img' src={Slider3} alt="" />
-                    </div>
+                    {MyView}
                 </Slider>
             </Fragment>
         )
