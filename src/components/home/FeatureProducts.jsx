@@ -34,13 +34,15 @@ class FeatureProducts extends Component {
         const MyView = products.map((product,i)=>{
 
             return <Col className='p-1' key={1} xl={2} lg={2} sm={4} xs={6} >
-                    <Card className='image-box card'>
-                        <img className='center' src={product.image} alt="" />
-                        <Card.Body>
-                            <p className='product-name-on-card'>{product.title}</p>
-                            <p className='product-price-on-card'>Price ${product.price}</p>
-                        </Card.Body>
-                    </Card>
+                    <Link className="text-link" to={"/productdetails/"+product.id} >
+                        <Card className='image-box card'>
+                            <img className='center' src={product.image} alt="" />
+                            <Card.Body>
+                                <p className='product-name-on-card'>{product.title}</p>
+                                <p className='product-price-on-card'>Price ${product.price}</p>
+                            </Card.Body>
+                        </Card>
+                    </Link>
                 </Col>
 
         })

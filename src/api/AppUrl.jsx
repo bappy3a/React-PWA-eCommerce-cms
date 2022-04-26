@@ -6,6 +6,10 @@ class AppUrl {
   static allFeature = this.BaseURL+"/productlistbyremark/FEATURE"
   static allArrival = this.BaseURL+"/productlistbyremark/ARRIVAL"
   static allSlider = this.BaseURL+"/allslider"
+
+  static ProductDetails(code){
+    return this.BaseURL+"/productdetails/"+code;
+  }
 }
 
 export default AppUrl

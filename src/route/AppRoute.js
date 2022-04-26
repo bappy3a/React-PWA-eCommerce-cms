@@ -17,7 +17,7 @@ class AppRoute extends Component {
             <Route exact path="/login" component={UserLoginPage} ></Route>
             <Route exact path="/contact" component={ContactPage} ></Route>
             <Route exact path="/purchase" component={PurchasePage} ></Route>
-            <Route exact path="/productdetails" component={ProductDetailsPage} ></Route>
+            <Route exact path="/productdetails/:code" component={ProductDetailsPage} ></Route>
             <Route exact path="/cart" component={CartPage} />
           </Switch>
       </Fragment>
