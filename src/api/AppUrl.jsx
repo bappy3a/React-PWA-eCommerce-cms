@@ -10,6 +10,7 @@ class AppUrl {
   static ProductDetails(code){
     return this.BaseURL+"/productdetails/"+code;
   }
+  static UserLogin = this.BaseURL+"/login"
 }
 
 export default AppUrl
